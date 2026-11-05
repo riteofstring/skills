@@ -1,9 +1,9 @@
 ---
-name: supervised-build
-description: Coordinate supervised implementation with a shared checklist, independent plan review, delegated coding, evidence checks, and periodic scope and direction checks. Use when the user invokes supervised-build or explicitly asks for this workflow.
+name: overseer
+description: Coordinate supervised implementation with a shared checklist, independent plan review, delegated coding, evidence checks, and periodic scope and direction checks. Use when the user invokes overseer, asks for a supervised build, or explicitly asks for this workflow.
 ---
 
-# Supervised build
+# Overseer
 
 Use the invocation arguments, or the conversation's current goal if there are none.
 Read applicable project instructions, requirements and any experiment ledger if
