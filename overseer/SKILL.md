@@ -76,8 +76,8 @@ user with a recommendation.
 ## 4. The work
 
 Brief the worker narrowly: goal, requirements, inputs (the files, for code),
-constraints, what is ruled out, what to report, and a time box. Specify the workspace and output
-locations, and ensure the agent can access its inputs. Keep the output to one
+constraints, what is ruled out, what to report, and a time box. Specify the
+workspace and output locations, and ensure the agent can access its inputs. Keep the output to one
 coherent, reviewable unit, such as one commit or small series for code. No
 pushing, publishing or sending anywhere. Keep new work separate from accepted
 work where comparison matters. Do not assign concurrent edits to the same files.
@@ -93,6 +93,11 @@ The worker's report is a claim. Before accepting it, for any kind of work:
 - Open the evidence yourself, such as logs, numbers, sources or screenshots.
 - Keep the work inside any budget in the requirements (lines, words, cost,
   time); report the figure.
+- When the work has a visible or interactive side, look at it and use it:
+  screenshots, screen recordings, browser or device control, or computer use,
+  whichever the harness offers. Ask the worker and auditor to do the same and
+  include what they captured. Use test or sandbox copies, not the user's live
+  accounts. If something can't be seen or driven here, say it wasn't checked.
 
 Then the checks for its kind:
 

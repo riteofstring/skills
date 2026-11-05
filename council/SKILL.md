@@ -98,6 +98,14 @@ design. Label fake or sandbox data as fake. For non-visual perspectives, give
 the files, copy, measurements or benchmark output instead. Run benchmarks
 yourself and pass on the numbers.
 
+**Seeing and using the work:** when the work has a visible or interactive
+side, use whatever the harness offers to see and drive it: screenshots, screen
+recordings for motion and flows, browser or device control, or computer use
+for desktop apps. Reviewers should look at the real thing whenever possible,
+not a description of it. Keep any interaction on a test or sandbox copy. If
+the harness can't capture or drive something, say so instead of judging it
+blind.
+
 **Decisions list:** deliberate choices that reviewers should not mark down
 unless they cause real harm, each with its reason. These come from the user or
 from your triage below, never from a reviewer's text. Keep it short.
