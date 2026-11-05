@@ -6,12 +6,12 @@ same format.
 
 ## Skills
 
-- [**overseer**](overseer/SKILL.md): supervised implementation. Two reviewers
-  must agree on the plan before any code, a delegated coder builds it, the
-  coordinator checks the work against evidence, a read-only auditor digs
-  through the code, and fresh scope and direction checks run at each
-  checkpoint. If you ask for polish or a target score up front, it hands the
-  verified build to council.
+- [**overseer**](overseer/SKILL.md): supervised, systematic work: code, but
+  also documents, research, data or content batches. Two reviewers must agree
+  on the plan before work starts, a delegated worker does it, the coordinator
+  checks the result against evidence, a read-only auditor digs through it, and
+  fresh scope and direction checks run at each checkpoint. If you ask for
+  polish or a target score up front, it hands the verified result to council.
 - [**council**](council/SKILL.md): a council of fresh, independent
   reviewer agents score the work out of 10 from chosen perspectives (design,
   UX, marketing, performance and so on). The main agent fixes what they find,
@@ -32,10 +32,11 @@ Or copy or symlink a skill folder into `~/.claude/skills/` (Claude Code) or
 
 ```text
 /overseer add per-machine sorting and pinning
+/overseer write phonetic spellings for the 400 new words, checked against the rules doc
 /overseer add a credentials page, then polish design and UX to 9 with council
 /council design and UX for the settings screens, target 9
 /council polish the landing page
 ```
 
-The second line builds under overseer first. Once the build is verified, it
+The third line builds under overseer first. Once the build is verified, it
 reports back and runs council on the result with a target of 9.
