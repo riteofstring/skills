@@ -44,8 +44,7 @@ required model, setting or capability is unavailable, report the mismatch and as
 how to proceed before dependent work; never substitute silently. Reviewers must
 be separate agents from the coordinator, even when they use the same model.
 
-Do not use GPT-6.1 Sol for any role unless the user explicitly asks for it. The
-coder's fallback to GPT-6 Astra at high effort is pre-approved when Opus 5.5 at
+The coder's fallback to GPT-6 Astra at high effort is pre-approved when Opus 5.5 at
 medium effort is unavailable; state which one was used in the checklist and the
 first update.
 
