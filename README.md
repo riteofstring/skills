@@ -6,18 +6,23 @@ same format.
 
 ## Skills
 
-- [**overseer**](overseer/SKILL.md): supervised, systematic work: code, but
-  also documents, research, data or content batches. Two reviewers must agree
-  on the plan before work starts, a delegated worker does it, the coordinator
-  checks the result against evidence, a read-only auditor digs through it, and
-  fresh scope and direction checks run at each checkpoint. If you ask for
-  polish or a target score up front, it hands the verified result to council.
-- [**council**](council/SKILL.md): a council of fresh, independent
-  reviewer agents score the work out of 10 from chosen perspectives (design,
-  UX, marketing, performance and so on). The main agent fixes what they find,
-  and new reviewers score it again until every reviewer reaches the target
-  score, or until the feedback stops being useful. Has a `polish` mode for
-  detail-oriented finish.
+Use **overseer** to build something and **council** to polish and iterate on
+it. They work on their own or in sequence: overseer can hand its verified
+result to council.
+
+- [**overseer**](overseer/SKILL.md), for building: supervised, systematic
+  work. That's code, but also documents, research, data or content batches.
+  Two reviewers must agree on the plan before work starts, a delegated worker
+  does it, the coordinator checks the result against evidence, a read-only
+  auditor digs through it, and fresh scope and direction checks run at each
+  checkpoint. If you ask for polish or a target score up front, it hands the
+  verified result to council.
+- [**council**](council/SKILL.md), for polish and iteration: fresh,
+  independent reviewer agents score the work out of 10 from chosen
+  perspectives (design, UX, marketing, performance and so on). The main agent
+  fixes what they find, and new reviewers score it again until every reviewer
+  reaches the target score, or until the feedback stops being useful. Has a
+  `polish` mode for detail-oriented finish.
 
 ## Install
 
