@@ -28,21 +28,22 @@ conversation history. Keep the plan and agreement in this one checklist.
 
 ## 2. Roles
 
-| Role | Default model | Setting |
-| ---- | ------------- | ------- |
-| Coder | Claude Opus 5.5, else GPT-6 Astra | Medium effort; Astra at high effort |
-| Plan reviewer | GPT-6 Astra | Medium effort |
-| Plan reviewer | Claude Fable 5.1 | Medium effort |
-| Scope reviewer | Claude Opus 5.5 | Fresh context |
-| Direction reviewer | GPT-6 Astra | Medium effort |
-| Coordinator, checker, integrator | You | Direct |
+| Role | Default model | Effort |
+| ---- | ------------- | ------ |
+| Coordinator, checker, integrator | You | Your own |
+| Coder | Claude Opus 5.5 (fallback: GPT-6 Astra) | Medium (Astra: high) |
+| Plan reviewer | GPT-6 Astra | Medium |
+| Plan reviewer | Claude Fable 5.1 | Medium |
+| Scope reviewer | Claude Opus 5.5 | Medium |
+| Direction reviewer | GPT-6 Astra | Medium |
 
 Honor explicit user overrides throughout. Before delegation, discover the models,
 settings and delegation mechanisms the runtime supports, and resolve these roles
 through them. Do not assume particular tools, provider IDs or accounts. If a
 required model, setting or capability is unavailable, report the mismatch and ask
-how to proceed before dependent work; never substitute silently. Reviewers must
-be separate agents from the coordinator, even when they use the same model.
+how to proceed before dependent work; never substitute silently. Every reviewer
+is a fresh agent, separate from the coordinator even when it uses the same
+model, and never a fork that inherits the coordinator's context.
 
 The coder's fallback to GPT-6 Astra at high effort is pre-approved when Opus 5.5 at
 medium effort is unavailable; state which one was used in the checklist and the
