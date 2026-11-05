@@ -1,18 +1,18 @@
 # skills
 
-Agent skills by riteofstring. Each skill is a folder under `skills/` with a
+Agent skills by riteofstring. Each skill is a top-level folder with a
 `SKILL.md`, and works in Claude Code, Codex and other agents that read the
 same format.
 
 ## Skills
 
-- [**council**](skills/council/SKILL.md): a council of fresh, independent
+- [**council**](council/SKILL.md): a council of fresh, independent
   reviewer agents score the work out of 10 from chosen perspectives (design,
   UX, marketing, performance and so on). The main agent fixes what they find,
   and new reviewers score it again until every reviewer reaches the target
   score, or until the feedback stops being useful. Has a `polish` mode for
   detail-oriented finish.
-- [**supervised-build**](skills/supervised-build/SKILL.md): supervised
+- [**supervised-build**](supervised-build/SKILL.md): supervised
   implementation. Two reviewers must agree on the plan before any code, a
   delegated coder builds it, the coordinator checks the work against evidence,
   and fresh scope and direction checks run at each checkpoint.
