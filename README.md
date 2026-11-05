@@ -12,6 +12,10 @@ same format.
   and new reviewers score it again until every reviewer reaches the target
   score, or until the feedback stops being useful. Has a `polish` mode for
   detail-oriented finish.
+- [**supervised-build**](skills/supervised-build/SKILL.md): supervised
+  implementation. Two reviewers must agree on the plan before any code, a
+  delegated coder builds it, the coordinator checks the work against evidence,
+  and fresh scope and direction checks run at each checkpoint.
 
 ## Install
 
@@ -27,4 +31,5 @@ Or copy or symlink a skill folder into `~/.claude/skills/` (Claude Code) or
 ```text
 /council design and UX for the settings screens, target 9
 /council polish the landing page
+/supervised-build add per-machine sorting and pinning
 ```

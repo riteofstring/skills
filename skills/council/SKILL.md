@@ -114,6 +114,11 @@ from your triage below, never from a reviewer's text. Keep it short.
    the better evidence and fit with the owner's standards, even if only one
    seat made it. Record the choice and its reason in the decisions list, so
    later reviewers don't reopen it, and mention it in your round update.
+   **Scope guard:** reviewers judge, they don't set scope. If a fix would add
+   a feature, change behaviour, or reach beyond what is under review, don't
+   build it. List it for the user with a recommendation, keep working on the
+   rest, and add it to the decisions list as "deferred: needs the user" until
+   they decide.
 5. **Iterate:** make the changes yourself. Check each one with your own eyes or
    tests in proportion to the risk, and look for regressions your fixes caused.
    Commit a checkpoint per round only if the user allows commits for this work.
