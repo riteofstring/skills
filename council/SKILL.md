@@ -68,11 +68,16 @@ and keep it the same across rounds so scores stay comparable. It contains:
 - The seat's perspective, and the owner's standards close to verbatim.
 - A scale anchor: 9 = polished, obvious hierarchy, nothing redundant or
   confusing for this perspective; 10 = best in class. Be strict.
-- In polish mode, also: "Small details are in scope: alignment, spacing,
-  consistent wording, icons and units, every state (empty, loading, error,
-  long text), and the light and dark appearances. Report every one you can
+- In polish mode, also: "Small details are in scope. Report every one you can
   point to in the materials, not just the top 10. Don't report taste
-  preferences you can't tie to the owner's standards."
+  preferences you can't tie to the owner's standards." Then name the details
+  that fit the work, for example:
+  - **Interfaces:** alignment, spacing, consistent wording, icons and units,
+    every state (empty, loading, error, long text), light and dark.
+  - **Code:** naming, consistent patterns, error messages, edge cases, dead
+    code, comments that no longer match the code.
+  - **Writing:** consistent terms, word choice, formatting, links and
+    references.
 - Where the materials and relevant source are. Read-only: no edits, commits or
   servers, and no builds or tests unless the perspective needs them.
 - Output, under 600 words (1,200 in polish mode):
