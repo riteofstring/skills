@@ -133,6 +133,9 @@ checklist. Never push, publish or merge without explicit owner approval. Finish
 by ticking only verified completed items and stating what is done, what failed
 and what the user must decide.
 
-If the finished work would benefit from scored polish, such as UI, design or
-copy, suggest running the `council` skill on it if it's installed. Don't start
-it without the user's go-ahead.
+If the user asked for polish or a target score as part of this task (for
+example "build this, then polish to 9"), record that in the checklist. Once the
+build is verified, run the `council` skill on the result with that target, and
+report the build before council starts. Otherwise, if the finished work would
+benefit from scored polish, such as UI, design or copy, suggest council and
+wait for the user's go-ahead. If council isn't installed, say so.
