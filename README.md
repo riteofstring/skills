@@ -12,10 +12,11 @@ same format.
   and new reviewers score it again until every reviewer reaches the target
   score, or until the feedback stops being useful. Has a `polish` mode for
   detail-oriented finish.
-- [**overseer**](overseer/SKILL.md): supervised
-  implementation. Two reviewers must agree on the plan before any code, a
-  delegated coder builds it, the coordinator checks the work against evidence,
-  and fresh scope and direction checks run at each checkpoint.
+- [**overseer**](overseer/SKILL.md): supervised implementation. Two reviewers
+  must agree on the plan before any code, a delegated coder builds it, the
+  coordinator checks the work against evidence, a read-only auditor digs
+  through the code, and fresh scope and direction checks run at each
+  checkpoint.
 
 ## Install
 

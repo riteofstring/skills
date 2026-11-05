@@ -1,6 +1,6 @@
 ---
 name: overseer
-description: Coordinate supervised implementation with a shared checklist, independent plan review, delegated coding, evidence checks, and periodic scope and direction checks. Use when the user invokes overseer, asks for a supervised build, or explicitly asks for this workflow.
+description: Coordinate supervised implementation with a shared checklist, independent plan review, delegated coding, evidence checks, a read-only code audit, and periodic scope and direction checks. Use when the user invokes overseer, asks for a supervised build, or explicitly asks for this workflow.
 ---
 
 # Overseer
@@ -36,6 +36,7 @@ conversation history. Keep the plan and agreement in this one checklist.
 | Plan reviewer | Claude Fable 5.1 | Medium |
 | Scope reviewer | Claude Opus 5.5 | Medium |
 | Direction reviewer | GPT-6 Astra | Medium |
+| Auditor | GPT-6.1 Sol | Medium |
 
 Honor explicit user overrides throughout. Before delegation, discover the models,
 settings and delegation mechanisms the runtime supports, and resolve these roles
@@ -90,7 +91,17 @@ The coder's report is a claim. Before accepting it:
   take performance numbers from a development host when the requirements name
   other hardware.
 
-Send failures back to the coder as a new task with the findings attached.
+**Audit.** After your own checks pass, give the auditor the brief, the diff and
+the requirements, as a fresh read-only task. It digs through the changed code
+and what it touches: correctness, edge cases, error handling, security, tests
+that don't test what they claim, and dead or duplicated code. It must not edit,
+commit, or run anything that changes state. Each finding gives the file and
+line, the evidence, and its severity. Its findings are claims too: confirm each
+one in the code before acting, and record rejected ones with the reason in the
+checklist.
+
+Send failures and confirmed findings back to the coder as a new task with the
+findings attached.
 
 ## 6. Supervision
 
