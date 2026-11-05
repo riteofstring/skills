@@ -75,8 +75,8 @@ user with a recommendation.
 
 ## 4. The work
 
-Brief the worker narrowly: goal, requirements, inputs, constraints, what is
-ruled out, what to report, and a time box. Specify the workspace and output
+Brief the worker narrowly: goal, requirements, inputs (the files, for code),
+constraints, what is ruled out, what to report, and a time box. Specify the workspace and output
 locations, and ensure the agent can access its inputs. Keep the output to one
 coherent, reviewable unit, such as one commit or small series for code. No
 pushing, publishing or sending anywhere. Keep new work separate from accepted
