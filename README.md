@@ -13,11 +13,13 @@ result to council.
 - [**overseer**](overseer/SKILL.md), for building: gets systematic work done
   and verified. That's code, but also documents, research, data or content
   batches. Three modes:
-  - `fast` (default): the agent builds directly and checks the result against
-    your description, including visually, with no reviews or tests yet.
-  - `heavy`: two reviewers agree on the plan first, a delegated worker builds
-    it, then tests, a read-only audit, and scope and direction checks.
-  - `medium`: a fast pass until it works, then a heavy pass over the result.
+  - `medium` (default): builds fast until it works, then a heavy pass over
+    the result: reviewers check the approach as built, then tests, a
+    read-only audit, and scope and direction checks.
+  - `fast`: only the fast build. The agent works directly and checks the
+    result against your description, including visually.
+  - `heavy`: two reviewers agree on the plan before anything is built, then a
+    delegated worker, tests, the audit and the checks.
 
   If you ask for polish or a target score up front, it hands the verified
   result to council.
@@ -41,13 +43,14 @@ Or copy or symlink a skill folder into `~/.claude/skills/` (Claude Code) or
 
 ```text
 /overseer add per-machine sorting and pinning
+/overseer fast prototype a drag-to-reorder sidebar
 /overseer heavy migrate the billing tables to the new schema
-/overseer medium write phonetic spellings for the 400 new words, checked against the rules doc
-/overseer medium add a credentials page, then polish design and UX to 9 with council
+/overseer write phonetic spellings for the 400 new words, checked against the rules doc
+/overseer add a credentials page, then polish design and UX to 9 with council
 /council design and UX for the settings screens, target 9
 /council polish the landing page
 ```
 
-The fourth line builds fast, tightens with a heavy pass, then runs council on
-the verified result with a target of 9. Running `/overseer heavy` after a fast
-run picks up the same checklist and tightens that work.
+The fifth line builds fast, tightens with a heavy pass, then runs council on
+the verified result with a target of 9. Running `/overseer heavy` after a
+`fast` run picks up the same checklist and tightens that work.

@@ -1,6 +1,6 @@
 ---
 name: overseer
-description: Get systematic work (code, documents, research, data, content batches, migrations and similar) built and verified, in one of three modes. Fast (default) builds directly and checks the result against the user's description. Heavy adds independent plan review, a delegated worker, tests, a read-only audit, and scope and direction checks. Medium does a fast pass, then a heavy pass over the result. Use when the user invokes overseer, asks for a supervised build, or asks to build fast first and tighten later.
+description: Get systematic work (code, documents, research, data, content batches, migrations and similar) built and verified, in one of three modes. Medium (default) builds fast, then goes over the result with a heavy pass. Fast only builds directly and checks the result against the user's description. Heavy adds independent plan review before any work, then a delegated worker, tests, a read-only audit, and scope and direction checks. Use when the user invokes overseer, asks for a supervised build, or asks to build fast first and tighten later.
 ---
 
 # Overseer
@@ -17,21 +17,22 @@ steps, use them for code and the closest equivalent otherwise.
 ## 0. Modes
 
 Take the mode from the arguments (`fast`, `medium` or `heavy`, or words such as
-"quick", "thorough", "deep"). Default to `fast`.
+"quick", "thorough", "deep"). Default to `medium`.
 
+- **Medium (default):** a fast pass until the result works, then a heavy pass
+  over it. The heavy pass skips agreement before work. Instead, the plan
+  reviewers review the approach as built, and their agreed changes become the
+  tightening plan. Then tests, the audit and checkpoints run as in heavy.
 - **Fast:** get a working result quickly. You do the work yourself. Skip plan
   agreement, tests, the audit and checkpoints until it works, but always check
   the result against the user's description (section 5). For prototypes,
   exploration and "show me it working".
 - **Heavy:** the full process: plan agreement before work, a delegated
-  worker, tests, the audit and checkpoints. For risky, shared or long-lived work.
-- **Medium:** a fast pass until the result works, then a heavy pass over it.
-  The heavy pass skips agreement before work. Instead, the plan reviewers
-  review the approach as built, and their agreed changes become the tightening
-  plan. Then tests, the audit and checkpoints run as in heavy.
+  worker, tests, the audit and checkpoints. For risky work where the plan
+  should be agreed before anything is built.
 
 Running overseer again on a task with an existing checklist continues it, so
-`/overseer heavy` after a fast run tightens the same work. Sections marked
+`/overseer heavy` after a `fast` run tightens the same work. Sections marked
 *(heavy)* apply to heavy mode and the heavy pass of medium mode.
 
 ## 1. Shared checklist
@@ -202,8 +203,8 @@ untested, and correct earlier mistakes openly. Record tried approaches, with
 their commits where applicable, in the project's existing ledger, or otherwise
 in the checklist. Never push, publish, send or merge without explicit owner
 approval. Finish by ticking only verified completed items and stating what is
-done, what failed and what the user must decide. After a fast run, say what was
-skipped and offer `heavy` to tighten it.
+done, what failed and what the user must decide. After a `fast` run, say what
+was skipped and offer a heavy pass to tighten it.
 
 If the user asked for polish or a target score as part of this task (for
 example "build this, then polish to 9"), record that in the checklist. Once the
