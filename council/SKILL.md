@@ -45,21 +45,42 @@ CLI such as `claude -p` or `codex exec` started from a shell also gives a fresh
 agent. If a model can't be reached, or the harness can't start subagents at
 all, report it and ask; never substitute silently.
 
-## 2. Keep reviewers unpolluted
+## 2. Keep reviews blind
 
-This is the point of the council. Every round:
+Only the coordinator sees the review history. Before launching, check how the
+runner supplies context, exposes files and tools, and handles later rounds.
+If it inherits conversation history or requires prior findings and responses,
+use a permitted runner that supports blind review. If none is available,
+explain the conflicting rule and ask whether to proceed with informed review
+or change the orchestration. Follow higher-priority instructions; never call
+a review blind when they require sharing earlier feedback.
+
+Every round:
 
 - **Start a new agent for every seat.** Never continue, message or fork an
   earlier reviewer, and never use a fork that inherits your context. If the
   tool takes a request or idempotency ID, use a distinct one per seat per round.
-- **Send each reviewer only:** the brief, the current materials, and the
-  decisions list (section 3). Never send other reviewers' output, any earlier
-  scores or critiques (including its own), or your opinion of the work.
-- **Keep the brief neutral.** Don't write "we fixed X, confirm it". Describe
-  the work as it is now.
-- **Run seats in parallel** and don't share anything between them while they run.
+- **Send only the neutral brief and current materials**, including relevant
+  source and the owner's requirements. Exclude earlier scores, critiques,
+  responses, revision summaries, your opinions, and decisions derived from
+  reviews. Paraphrasing feedback as a constraint still leaks it. The revised
+  work is allowed; the review history behind it is not.
+- **Keep labels and instructions neutral.** Don't write "we fixed X, confirm
+  it" or label the work "improved". Describe the work as it is now.
+- **Separate reviewer inputs from coordinator records.** Keep prior reviews,
+  `ledger.md` and the private decisions list out of the supplied materials
+  and restrict access through files, tools, memory and messages where the
+  runner supports it. Tell reviewers to use only the supplied materials and
+  relevant source, and not to look up review history or contact other seats.
+  A separate directory, worktree or fresh context alone does not enforce
+  access isolation. If access is shared, disclose that blindness relies on
+  instructions rather than enforced isolation.
+- **Run seats in parallel on the same snapshot.** Wait for every review
+  before triage or edits; never share outputs between seats. If a reviewer
+  sees earlier feedback, discard that review and rerun the seat fresh after
+  removing the exposure.
 
-## 3. Brief, materials and decisions
+## 3. Brief, materials and private decisions
 
 Write the brief once, in a working directory such as `/tmp/council/<slug>/`,
 and keep it the same across rounds so scores stay comparable. It contains:
@@ -89,6 +110,10 @@ and keep it the same across rounds so scores stay comparable. It contains:
   3. What works and must be kept.
   4. What would have to change to reach the target score.
 
+If the user changes the requirements, update the brief neutrally and record
+the changed basis for comparison in the private ledger. Do not turn your
+review triage into new owner requirements.
+
 **Materials:** capture the same set every round with a script, so rounds
 compare like for like. For anything visual, give real screenshots at the sizes
 and appearances the user will see (default window size, light and dark), and
@@ -104,11 +129,12 @@ recordings for motion and flows, browser or device control, or computer use
 for desktop apps. Reviewers should look at the real thing whenever possible,
 not a description of it. Keep any interaction on a test or sandbox copy. If
 the harness can't capture or drive something, say so instead of judging it
-blind.
+without seeing it.
 
-**Decisions list:** deliberate choices that reviewers should not mark down
-unless they cause real harm, each with its reason. These come from the user or
-from your triage below, never from a reviewer's text. Keep it short.
+**Private decisions list:** record accepted, rejected and deferred suggestions
+with reasons, so you can handle repeated feedback consistently. Never send
+this list to reviewers. Owner requirements belong in the neutral brief;
+critique-derived decisions belong here. Keep it short.
 
 ## 4. The loop
 
@@ -121,17 +147,16 @@ from your triage below, never from a reviewer's text. Keep it short.
    escape hatch (section 5) before going on.
 4. **Triage:** fix what several seats raise first, then anything that blocks a
    seat from reaching the target. If the same seat raises an item in two
-   rounds, either do it or add it to the decisions list with a reason, and tell
-   the user which. Items you keep putting off are why scores stall.
+   rounds, either do it or record the reason privately, and tell the user
+   which. Items you keep putting off are why scores stall.
    Disagreement between seats is useful, not noise. Pick the suggestion with
    the better evidence and fit with the owner's standards, even if only one
-   seat made it. Record the choice and its reason in the decisions list, so
-   later reviewers don't reopen it, and mention it in your round update.
+   seat made it. Record the choice and its reason privately, and mention it
+   in your update to the user, outside the reviewer inputs.
    **Scope guard:** reviewers judge, they don't set scope. If a fix would add
    a feature, change behaviour, or reach beyond what is under review, don't
    build it. List it for the user with a recommendation, keep working on the
-   rest, and add it to the decisions list as "deferred: needs the user" until
-   they decide.
+   rest, and record it privately as "deferred: needs the user" until they decide.
 5. **Iterate:** make the changes yourself. Check each one with your own eyes or
    tests in proportion to the risk, and look for regressions your fixes caused.
    Commit a checkpoint per round only if the user allows commits for this work.
@@ -150,8 +175,9 @@ still worth acting on. Count it as noise when most of these hold:
   repeated asks.
 - The top issues are minor polish, not problems with the user's workflow,
   clarity or correctness.
-- Fixes go in circles: after you've settled a disagreement in the decisions
-  list, reviewers keep asking to undo it with no new evidence.
+- Fixes go in circles: successive suggestions undo one another without
+  evidence of harm. Reviewers cannot see your private decisions; repeated
+  criticism alone is not noise.
 - Each fix brings a new complaint of the same size rather than a higher score.
 
 **In polish mode**, small issues are the work and a flat score isn't noise on
@@ -180,4 +206,6 @@ Wait for their answer before starting another round.
 ## 6. Final report
 
 Give the score history per seat, what changed, the decisions list, what was
-verified and what wasn't, and where the ledger and materials are.
+verified and what wasn't, and where the ledger and materials are. State
+whether reviews were blind or informed, whether access isolation was enforced
+or instruction-based, and any exposure or reruns.
