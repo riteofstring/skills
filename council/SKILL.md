@@ -126,7 +126,8 @@ Include:
   review output, except temporary build and test artifacts in a disposable
   copy or sandbox. Do not edit source, commit or start servers. Run builds or
   tests only when necessary for your perspective and leave the reviewed
-  snapshot unchanged. Look at every supplied image."
+  snapshot unchanged. Look at every supplied image and watch every supplied
+  video or screen recording."
 - Output, under 600 words (1,200 in polish mode):
   1. `SCORE: N/10` on the first line (halves allowed). With several areas,
      give a score per area as well as the overall score.
@@ -151,9 +152,11 @@ measurements or benchmark output instead. Run benchmarks yourself and pass on
 the numbers.
 
 **Interaction:** for interactive work, use the host's available tools to drive
-flows and observe motion on a test or sandbox copy. If required visual or
-interactive evidence cannot be captured, disclose the gap rather than judge
-unseen behaviour.
+flows and observe motion on a test or sandbox copy. Use video or screen
+recordings where screenshots cannot show the behaviour, such as animations,
+transitions or multi-step interactions. Inspect recordings before supplying
+them to reviewers. If required visual or interactive evidence cannot be
+captured or viewed, disclose the gap rather than judge unseen behaviour.
 
 **Private decisions list:** record accepted, rejected and deferred suggestions
 with reasons, so you can handle repeated feedback consistently.
