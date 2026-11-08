@@ -23,6 +23,12 @@ none. Establish five things, and ask only for what you cannot infer:
 You are the coordinator and you do the iteration work yourself. The reviewers
 only judge.
 
+**Bound the work.** Record what is in scope, what is excluded, and any user
+time, cost or round limits before launching reviewers. Carry these boundaries
+in every brief. A target score does not authorize extra features, broader
+refactoring, new review perspectives or unlimited rounds. Use the smallest
+change that resolves an evidenced problem with the requested result.
+
 ## 1. Seats
 
 A seat is one reviewer: one model judging from one perspective. By default
@@ -110,6 +116,12 @@ Include:
 - The assessment rule: "Assess the whole current work against this rubric.
   Earlier findings, if supplied, are background, not a checklist. A fix earns
   no credit merely for having been made; new issues count fully."
+- The scope boundaries and finding rule: "Separate necessary corrections from
+  optional refinements. For a necessary correction, identify the requirement
+  or user-visible problem and evidence of its impact. Do not treat personal
+  preferences or hypothetical future needs as blockers. Report fewer issues
+  when fewer are supported; no issue quota needs filling. In polish mode,
+  judge details against the owner's requested finish."
 - The polish-mode instruction, when applicable: "Small details are in scope.
   Report every one you can point to in the materials, not just the top 10.
   Don't report taste preferences you can't tie to the owner's standards." Then
@@ -173,8 +185,11 @@ with reasons, so you can handle repeated feedback consistently.
    that round's materials were sound, stop and report. Otherwise check the
    escape hatch (section 5) before going on.
 4. **Triage:**
-   - **Priority:** fix what several seats raise first, then anything that
-     blocks a seat from reaching the target.
+   - **Priority:** first confirm that a finding matters to the agreed scope.
+     Prioritize necessary corrections by impact, using independent agreement
+     as supporting evidence. A withheld score alone does not justify a fix.
+     Leave optional refinements unimplemented unless they serve the requested
+     finish; summarize them separately without blocking unrelated work.
    - **Repeated items:** if a seat raises an item in two rounds, fix it or
      record why not and tell the user. Repetition requires a decision, not
      agreement. Informed repetition is not independent corroboration; weigh
@@ -199,11 +214,18 @@ The target may not be reachable. Late rounds can turn into noise, where
 reviewers quibble over polish and every fix uncovers a new, equally small
 complaint. When that happens, pause the council instead of grinding on.
 
-From round 4 on, after recording each round, judge whether the feedback is
-still worth acting on. Count it as noise when most of these hold:
+After every round, name the concrete improvement another round is expected to
+produce. Stop at a user budget limit, or pause after two consecutive rounds
+without meaningful progress on the requested result, even if scores remain
+below target. Scores, issue counts and activity alone are not progress: use
+resolved defects, better task outcomes or demonstrably improved requested
+polish. Do not reopen a rejected suggestion without new evidence, changed
+requirements or a regression; verify that an alleged recurrence is real.
 
-- No seat's score has risen for two rounds, even after you acted on its
-  repeated asks.
+Use these signs to judge whether feedback has become noise from any round:
+
+- Scores stall despite addressing supported findings, with no corresponding
+  improvement in the requested result.
 - The top issues are minor polish, not problems with the user's workflow,
   clarity or correctness.
 - Fixes go in circles: successive suggestions undo one another without

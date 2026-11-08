@@ -52,6 +52,16 @@ the task. The coordinator owns updates at decisions and checkpoints, and before
 long waits. Give each agent the relevant contents and source references; do not
 assume shared conversation history.
 
+**Scope contract (every mode).** State the observable conditions for completion
+and what is out of scope. Use the smallest approach that meets those conditions.
+Every worker and reviewer must separate necessary corrections from optional
+refinements and tie blockers to a requirement or an evidenced problem with the
+requested result. Preferences, speculative future needs and unrelated cleanup
+do not become requirements because a reviewer mentions them. Record optional
+ideas separately; do not implement them or let them block delivery unless the
+user's requested finish includes them. Check this contract before each new
+work step, investigation or review cycle, including the fast pass.
+
 ## 2. Roles
 
 | Role | Default model | Effort |
@@ -88,6 +98,9 @@ the first update.
    with any changes you propose.
 2. Give the same proposal to both plan reviewers separately, read-only. Each
    answers with evidence and `AGREED: <conclusions>` or `DISAGREE: <blocking point>`.
+   Optional suggestions do not prevent agreement. Keep the tightening plan in
+   medium mode within the original scope; working output is not an invitation
+   to redesign it.
 3. Resolve objections against the source. Start each review round with fresh
    tasks carrying the original request, current proposal, evidence, prior
    responses and unresolved findings. Reviewers concede only to evidence, never
@@ -101,6 +114,11 @@ user with a recommendation.
 ## 4. The work
 
 Time-box each step. Commit at milestones where commits are allowed; never push.
+
+Before a detour, identify which completion condition it serves, what evidence
+would resolve the question, and when to stop investigating. Skip investigations
+that cannot change a required decision. Workers report newly discovered work
+outside their brief instead of expanding their assignment or delegating it.
 
 When delegating, brief the worker narrowly: goal, requirements, the user's
 description verbatim, inputs (the files, for code), constraints, what is ruled
@@ -160,10 +178,22 @@ gives its location (file and line, section, or record), the evidence and its
 severity. Its findings are claims too: confirm each one before acting, and
 record rejected ones with the reason in the checklist.
 
-Send failures and confirmed findings back to the worker as a new task with the
-findings attached.
+Send failures and confirmed necessary corrections back to the worker as a new
+task with the findings attached. After fixes, recheck those findings and
+plausible regressions; repeat a broader audit only when changes or new evidence
+justify it. Do not reopen rejected findings without new evidence, changed
+requirements or a regression. Once completion conditions and the mode's
+required checks are satisfied, finish rather than start optional cleanup.
 
 ## 6. Supervision
+
+Measure progress by completed requirements, resolved defects or evidence that
+settles a necessary decision, not activity, new suggestions or passing time.
+Before another work/review cycle, record its expected concrete benefit. After
+two consecutive cycles without meaningful progress, stop the affected loop
+and report the remaining blockers with a recommendation; do not launch another
+cycle until the user chooses a bounded next step. Do not call unresolved
+required work complete. User budgets take precedence over step time boxes.
 
 Stop after 30 minutes without progress on the real goal, yours or an agent's,
 and tell the user. Retain task handles, workspace and output locations in the
