@@ -36,7 +36,7 @@ each perspective gets three seats, one per model below. So a design-only
 council has three reviewers, and a design-and-marketing council has six.
 
 - Claude Opus 5.5
-- Claude Fable 5.1
+- Claude Fable 5.2
 - GPT-6 Astra
 
 Use default reasoning settings unless the user specifies otherwise.

@@ -69,7 +69,7 @@ work step, investigation or review cycle, including the fast pass.
 | Coordinator, checker, integrator | You | Your own |
 | Worker *(heavy)* | Claude Opus 5.5 (fallback: GPT-6 Astra) | Medium (Astra: high) |
 | Plan reviewer *(heavy)* | GPT-6 Astra | Medium |
-| Plan reviewer *(heavy)* | Claude Fable 5.1 | Medium |
+| Plan reviewer *(heavy)* | Claude Fable 5.2 | Medium |
 | Scope reviewer *(heavy)* | Claude Opus 5.5 | Medium |
 | Direction reviewer *(heavy)* | GPT-6 Astra | Medium |
 | Auditor *(heavy)* | GPT-6.1 Sol | Medium |
