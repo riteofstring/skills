@@ -1,0 +1,16 @@
+{
+  "frame": {
+    "question": "What share of orders came from the north region?",
+    "evidence_date": "2026-11-17",
+    "kind": "fact",
+    "primary_records": [{"record": "data.csv", "why": "the order system's export, not a summary"}],
+    "changed_since": "the shipping zones",
+    "not_checked": ["orders by city inside the region"],
+    "rivals": [],
+    "figures_from": "data.csv"
+  },
+  "claims": [
+    {"id": "C1", "text": "The north region got 31.25% of orders.", "type": "fact", "basis": "observed", "status": "supported",
+     "evidence": [{"path": "data.csv", "contains": ["north-share", ",31.25,percent"], "shows": "north region share of orders, percent, this week"}]}
+  ]
+}

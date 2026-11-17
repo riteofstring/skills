@@ -8,7 +8,8 @@ same format.
 
 Use **overseer** to build something and **council** to polish and iterate on
 it. They work on their own or in sequence: overseer can hand its verified
-result to council.
+result to council. Use **rigor** when you need to know what is true before
+you act on it.
 
 - [**overseer**](overseer/SKILL.md), for building: gets systematic work done
   and verified. That's code, but also documents, research, data or content
@@ -29,6 +30,22 @@ result to council.
   fixes what they find, and new reviewers score it again until every reviewer
   reaches the target score, or until the feedback stops being useful. Has a
   `polish` mode for detail-oriented finish.
+- [**rigor**](rigor/SKILL.md), for investigating: answers a question from
+  evidence on disk. A bash script drives the run and will not finish while a
+  demand is open:
+  - a frame first: the primary records, what may have changed, and rival
+    answers when the question is "why";
+  - every claim tied to a line in a file, and every number in a claim
+    matched against that line;
+  - the project's own checks, if it has a `rigor-gates.json`;
+  - a challenge from a model of the other provider family (a Claude
+    coordinator gets GPT-6.2 Astra, an OpenAI coordinator gets Claude Fable
+    5.2), which recomputes from the files and tries to refute each claim.
+    You can name another model or effort when you ask.
+
+  The report labels each claim upheld, disputed, not challenged or
+  uncertain. The script checks form and consistency, not truth; the
+  challenger does the recomputing. Needs `jq` and bash 3.2 or later.
 
 ## Install
 
@@ -49,8 +66,12 @@ Or copy or symlink a skill folder into `~/.claude/skills/` (Claude Code) or
 /overseer add a credentials page, then polish design and UX to 9 with council
 /council design and UX for the settings screens, target 9
 /council polish the landing page
+/rigor why did signups drop last week?
+/rigor is it true the export has skipped rows since the upgrade? challenger sol, effort high
 ```
 
 The fifth line builds fast, tightens with a heavy pass, then runs council on
 the verified result with a target of 9. Running `/overseer heavy` after a
 `fast` run picks up the same checklist and tightens that work.
+
+Rigor's tests run with `bash rigor/scripts/test.sh`.
