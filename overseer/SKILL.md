@@ -67,11 +67,11 @@ work step, investigation or review cycle, including the fast pass.
 | Role | Default model | Effort |
 | ---- | ------------- | ------ |
 | Coordinator, checker, integrator | You | Your own |
-| Worker *(heavy)* | Claude Opus 5.5 (fallback: GPT-6.2 Astra) | Medium (Astra: high) |
-| Plan reviewer *(heavy)* | GPT-6.2 Astra | Medium |
+| Worker *(heavy)* | Claude Opus 5.5 (fallback: GPT-6 Astra) | Medium (Astra: high) |
+| Plan reviewer *(heavy)* | GPT-6 Astra | Medium |
 | Plan reviewer *(heavy)* | Claude Fable 5.2 | Medium |
 | Scope reviewer *(heavy)* | Claude Opus 5.5 | Medium |
-| Direction reviewer *(heavy)* | GPT-6.2 Astra | Medium |
+| Direction reviewer *(heavy)* | GPT-6 Astra | Medium |
 | Auditor *(heavy)* | GPT-6.1 Sol | Medium |
 
 The worker does the work: the coder for code, the writer for a document, the
@@ -87,7 +87,7 @@ how to proceed before dependent work; never substitute silently. Every reviewer
 is a fresh agent, separate from the coordinator even when it uses the same
 model, and never a fork that inherits the coordinator's context.
 
-The worker's fallback to GPT-6.2 Astra at high effort is pre-approved when Opus 5.5
+The worker's fallback to GPT-6 Astra at high effort is pre-approved when Opus 5.5
 at medium effort is unavailable; state which one was used in the checklist and
 the first update.
 
