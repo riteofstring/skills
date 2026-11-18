@@ -8,8 +8,9 @@ same format.
 
 Use **overseer** to build something and **council** to polish and iterate on
 it. They work on their own or in sequence: overseer can hand its verified
-result to council. Use **rigor** when you need to know what is true before
-you act on it.
+result to council. Use **crux** when you need to know what matters and
+**rigor** when you need to know what is true before you act on it. Use
+**watch** for anything that runs long enough to fail while nobody is looking.
 
 - [**overseer**](overseer/SKILL.md), for building: gets systematic work done
   and verified. That's code, but also documents, research, data or content
@@ -30,6 +31,16 @@ you act on it.
   fixes what they find, and new reviewers score it again until every reviewer
   reaches the target score, or until the feedback stops being useful. Has a
   `polish` mode for detail-oriented finish.
+- [**crux**](crux/SKILL.md), for judgment questions of any kind ("is this
+  right?", "should I?", "will this work?", "is this good?", "what does this
+  mean?"): finds what the question turns on before weighing the details, so
+  the answer does not get every fact right and still miss the point. It puts
+  each position at its strongest, finds what really settles the matter (a
+  person, a limit, a goal or a fact) and looks from there, asks why things
+  are the way they are, traces what follows, and leads with a plain verdict.
+  When the stakes are real, a fresh agent gives a second opinion from the
+  seat it picks itself. `research` mode, off unless you ask, looks up what
+  people with first-hand experience say and do.
 - [**rigor**](rigor/SKILL.md), for investigating: answers a question from
   evidence on disk. A bash script drives the run and will not finish while a
   demand is open:
@@ -46,6 +57,20 @@ you act on it.
   The report labels each claim upheld, disputed, not challenged or
   uncertain. The script checks form and consistency, not truth; the
   challenger does the recomputing. Needs `jq` and bash 3.2 or later.
+- [**watch**](watch/SKILL.md), for anything that runs long enough to fail
+  while nobody is looking: a command on this machine, an app left running, a
+  job somewhere else (a CI run, a cloud job, a deploy) or another agent's
+  task. A bash script starts a local job detached, so it survives a session
+  or harness restart, and checks the work itself. The agent is woken only
+  when something changes:
+  - it ended, with its exit code, or was killed without one;
+  - it hangs: no output, and no change in the files it should be writing;
+  - it prints error lines, a health probe fails, or disk or memory runs low.
+
+  It demands a quick dry run and a time limit before the long one, refuses a
+  second copy of a job that is still going, and lists runs left unwatched
+  after a restart.
+  Needs bash 3.2 or later; tested on Linux.
 
 ## Install
 
@@ -66,12 +91,19 @@ Or copy or symlink a skill folder into `~/.claude/skills/` (Claude Code) or
 /overseer add a credentials page, then polish design and UX to 9 with council
 /council design and UX for the settings screens, target 9
 /council polish the landing page
+/crux my cofounder says we should move off the cloud like that company did. is he right?
+/crux should I take the offer? here is what each side told me
+/crux research is this take on pricing right? see what people who buy it say
 /rigor why did signups drop last week?
 /rigor is it true the export has skipped rows since the upgrade? challenger sol, effort high
+/watch run the full import and tell me if it dies
+/watch start the dev server and keep an eye on it while we work
+/watch keep an eye on the CI run for this branch
 ```
 
 The fifth line builds fast, tightens with a heavy pass, then runs council on
 the verified result with a target of 9. Running `/overseer heavy` after a
 `fast` run picks up the same checklist and tightens that work.
 
-Rigor's tests run with `bash rigor/scripts/test.sh`.
+Rigor's tests run with `bash rigor/scripts/test.sh`, and watch's with
+`bash watch/scripts/test.sh`.
