@@ -1,9 +1,9 @@
 ---
-name: overseer
-description: Get systematic work (code, documents, research, data, content batches, migrations and similar) built and verified, in one of three modes. Medium (default) builds fast, then goes over the result with a heavy pass. Fast only builds directly and checks the result against the user's description. Heavy adds independent plan review before any work, then a delegated worker, tests, a read-only audit, and scope and direction checks. Use when the user invokes overseer, asks for a supervised build, or asks to build fast first and tighten later.
+name: builder
+description: Get systematic work (code, documents, research, data, content batches, migrations and similar) built and verified, in one of two modes. Heavy (default) has independent reviewers agree on the plan before any work, then a delegated worker, tests, a read-only audit, and scope and direction checks. Fast builds first, then has the reviewers go over what was built before the same tests, audit and checks. Use when the user invokes builder (formerly named overseer), asks for a supervised build, or asks to build fast first and tighten later.
 ---
 
-# Overseer
+# Builder
 
 Use the invocation arguments, or the conversation's current goal if there are none.
 Read applicable project instructions, requirements and any experiment ledger if
@@ -16,24 +16,26 @@ steps, use them for code and the closest equivalent otherwise.
 
 ## 0. Modes
 
-Take the mode from the arguments (`fast`, `medium` or `heavy`, or words such as
-"quick", "thorough", "deep"). Default to `medium`.
+Take the mode from the arguments (`fast` or `heavy`, or words such as "quick",
+"thorough", "deep"). Default to `heavy`.
 
-- **Medium (default):** a fast pass until the result works, then a heavy pass
-  over it. The heavy pass skips agreement before work. Instead, the plan
-  reviewers review the approach as built, and their agreed changes become the
-  tightening plan. Then tests, the audit and checkpoints run as in heavy.
-- **Fast:** get a working result quickly. You do the work yourself. Skip plan
-  agreement, tests, the audit and checkpoints until it works, but always check
-  the result against the user's description (section 5). For prototypes,
-  exploration and "show me it working".
-- **Heavy:** the full process: plan agreement before work, a delegated
-  worker, tests, the audit and checkpoints. For risky work where the plan
-  should be agreed before anything is built.
+- **Heavy (default):** the full process: plan agreement before work, a
+  delegated worker, tests, the audit and checkpoints. The plan is agreed
+  before anything is built.
+- **Fast:** build first, then tighten. A fast pass gets a working result: you
+  do the work yourself and skip plan agreement, tests, the audit and
+  checkpoints until it works, but always check the result against the user's
+  description (section 5). Then a heavy pass goes over it. The heavy pass
+  skips agreement before work. Instead, the plan reviewers review the
+  approach as built, and their agreed changes become the tightening plan.
+  Then tests, the audit and checkpoints run as in heavy. For when a working
+  version early is worth more than an agreed plan.
 
-Running overseer again on a task with an existing checklist continues it, so
-`/overseer heavy` after a `fast` run tightens the same work. Sections marked
-*(heavy)* apply to heavy mode and the heavy pass of medium mode.
+Running builder again on a task with an existing checklist continues it from
+where it stopped. A checklist from an earlier version may record `medium`
+(now called `fast`) or a `fast` run that stopped before its heavy pass:
+continue either with the heavy pass. Sections marked *(heavy)* apply to heavy
+mode and the heavy pass of fast mode.
 
 ## 1. Shared checklist
 
@@ -75,9 +77,10 @@ work step, investigation or review cycle, including the fast pass.
 | Auditor *(heavy)* | GPT-6.1 Sol | Medium |
 
 The worker does the work: the coder for code, the writer for a document, the
-researcher or analyst otherwise. In fast mode you are the worker: handoffs lose
-the user's intent. Delegate in fast mode only when the user asks or the work
-splits cleanly, and then brief as in section 4 with "no tests, no reviews".
+researcher or analyst otherwise. In the fast pass you are the worker: handoffs
+lose the user's intent. Delegate in the fast pass only when the user asks or
+the work splits cleanly, and then brief as in section 4 with "no tests, no
+reviews".
 
 Honor explicit user overrides throughout. Before delegation, discover the models,
 settings and delegation mechanisms the runtime supports, and resolve these roles
@@ -94,12 +97,12 @@ the first update.
 ## 3. Agreement before work *(heavy)*
 
 1. Write the simplest viable approach in the checklist, asking the worker for a
-   proposal if useful. In medium mode, describe the approach as built instead,
+   proposal if useful. In fast mode, describe the approach as built instead,
    with any changes you propose.
 2. Give the same proposal to both plan reviewers separately, read-only. Each
    answers with evidence and `AGREED: <conclusions>` or `DISAGREE: <blocking point>`.
    Optional suggestions do not prevent agreement. Keep the tightening plan in
-   medium mode within the original scope; working output is not an invitation
+   fast mode within the original scope; working output is not an invitation
    to redesign it.
 3. Resolve objections against the source. Start each review round with fresh
    tasks carrying the original request, current proposal, evidence, prior
@@ -146,9 +149,9 @@ every mode:
   include what they captured. Use test or sandbox copies, not the user's live
   accounts. If something can't be seen or driven here, say it wasn't checked.
 
-Then the checks for its kind. In fast mode, run only what shows the result
-works (start the app, open the document), and leave test suites and gates for
-later.
+Then the checks for its kind. During the fast pass, run only what shows the
+result works (start the app, open the document), and leave test suites and
+gates for the heavy pass.
 
 - **Code:** run the narrowest useful tests yourself. Check behavior from
   screenshots or a recording of the real build on the target hardware. Look at
@@ -233,8 +236,8 @@ untested, and correct earlier mistakes openly. Record tried approaches, with
 their commits where applicable, in the project's existing ledger, or otherwise
 in the checklist. Never push, publish, send or merge without explicit owner
 approval. Finish by ticking only verified completed items and stating what is
-done, what failed and what the user must decide. After a `fast` run, say what
-was skipped and offer a heavy pass to tighten it.
+done, what failed and what the user must decide. If a `fast` run stops before
+its heavy pass, say what was skipped.
 
 If the user asked for polish or a target score as part of this task (for
 example "build this, then polish to 9"), record that in the checklist. Once the
