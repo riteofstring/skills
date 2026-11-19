@@ -1,1 +1,0 @@
-{"gates": [{"name": "good", "tags": ["ok"], "run": "echo PASS all fine; exit 0"}, {"name": "bad", "tags": ["broken"], "run": "echo FAIL 7 rows differ; echo WARN stale; exit 1"}]}
